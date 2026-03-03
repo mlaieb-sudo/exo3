@@ -17,6 +17,7 @@
 ## Overview
 
 In this exercise, you'll:
+
 - Test your code on multiple Node.js versions (matrix builds)
 - Speed up builds with caching
 - Create multiple jobs that run in sequence
@@ -116,7 +117,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'  # <-- This enables caching!
+          cache: "npm" # <-- This enables caching!
 
       - name: Install dependencies
         run: npm ci
@@ -149,14 +150,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
       - run: npm ci
       - run: npm run lint
 
   test:
     runs-on: ubuntu-latest
-    needs: lint  # Wait for lint to finish!
+    needs: lint # Wait for lint to finish!
     strategy:
       matrix:
         node-version: [18, 20, 22]
@@ -165,7 +166,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm' 
+          cache: "npm"
       - run: npm ci
       - run: npm test
 ```
@@ -203,8 +204,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
       - run: npm ci
       - run: npm run lint
       - run: npm test
@@ -242,7 +243,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: "20"
 
 jobs:
   lint:
@@ -252,7 +253,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+          cache: "npm"
       - run: npm ci
       - run: npm run lint
 
@@ -267,7 +268,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: "npm"
       - run: npm ci
       - run: npm test
 ```
@@ -288,10 +289,11 @@ jobs:
 ✅ Matrix builds for multiple versions  
 ✅ Build caching for speed  
 ✅ Multiple jobs with dependencies  
-✅ Artifacts to pass data  
+✅ Artifacts to pass data
 
 ---
 
 ## Next Steps
 
 Move on to [Exercise 4: Advanced Patterns](../exercise-04-advanced/)
+..
